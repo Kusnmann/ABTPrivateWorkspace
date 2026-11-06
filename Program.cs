@@ -10,7 +10,7 @@ internal static class Program
     private static async Task Main()
     {
         const string serverAddress = "https://localhost:8086";
-        const string projectFolder = @"C:\ABTProjects";
+        const string projectFolder = @"D:\XWP_Projects";
         string clientId = Guid.NewGuid().ToString("N");
 
         using var channel = GrpcChannel.ForAddress(serverAddress);
