@@ -33,6 +33,14 @@ internal static class Program
                 return;
             }
 
+            var registrationResult = heartbeat.ResponseStream.Current.Result;
+            if (registrationResult is null ||
+                registrationResult.Code != (uint)ABTOpennessResultCode.Types.Enum.Success)
+            {
+                Console.WriteLine($"Registration failed: {registrationResult?.Message?.Value}");
+                return;
+            }
+
             Console.WriteLine("Connected to ABTOpenness.");
             heartbeatTask = ReadHeartbeatsAsync(
                 heartbeat.ResponseStream, lifetime.Token);
